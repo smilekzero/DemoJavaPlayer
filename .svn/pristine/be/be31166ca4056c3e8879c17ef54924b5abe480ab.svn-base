@@ -1,0 +1,156 @@
+<?php $__env->startSection('submenu'); ?>
+ <?php echo e($menuname); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<!--#navbar-->
+    <div class="container-fluid animatedParent animateOnce">
+        <div class="animated fadeInUpShort">
+            <div class="row my-3">
+                <div class="col-md-8 offset-md-2">
+                    <form action="/admin/music" method="post">
+                    	<?php echo e(csrf_field()); ?>
+
+                        <div class="card no-b">
+                            <div class="card-body">
+                                <h5 class="card-title"><strong><?php echo e($title); ?></strong></h5>
+                                <div class="form-row">
+                                    <div class="col-md-8">
+                                        <!-- <div class="form-group m-0">
+                                            <label for="name" class="col-form-label s-12" ><h5 style="color: #616161">音乐</h5></label>
+                                            <input id="name" placeholder="输入音乐名" class="form-control r-0 light s-12 " type="text">
+                                        </div> -->
+                                        <div class="form-group m-0">
+                                            <label for="aname" class="col-form-label s-12" style="color:#9e9e9e;"><i class="icon-album s-12 mr-2"></i><span style="color: #616161;font-size: 14px;">专辑</span></label>
+                                            <input id="name" placeholder="输入专辑名" class="form-control r-0 light s-12 col-md-7 " type="text" name="aname">
+
+                                        	<label for="sname" class="col-form-label s-12" style="color:#9e9e9e;"><i class="icon-account_circle s-12 mr-2"></i><span style="color: #616161;font-size: 14px;">歌手</span></label>
+                                            <input id="name" placeholder="" class="form-control r-0 light s-12 col-md-7 " type="text" name="singer_id">
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-7 m-0">
+                                                <label for="cnic" class="col-form-label s-12"><i class="icon-calendar mr-2"></i><span style="color: #616161;font-size: 14px;">发布日期</span></label>
+                                                <input id="cnic" placeholder="Enter Form B or CNIC Number" class="form-control r-0 light s-12 date-picker" type="text" name="uptime">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-7 m-0">
+	                                        <label class="col-form-label s-12" for="liupai">Select A parent</label>
+	                                        <select class="custom-select my-1 form-control r-0 light s-12" id="inlineFormCustomSelectPref">
+	                                            <option selected>Choose...</option>
+	                                            <option value="1">One</option>
+	                                            <option value="2">Two</option>
+	                                            <option value="3">Three</option>
+	                                        </select>
+                                		</div>
+                                        <div class="form-group m-0">
+                                            <label for="dob" class="col-form-label s-12">GENDER</label>
+                                            <br>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="male" name="gender" class="custom-control-input">
+                                                <label class="custom-control-label" for="male">Male</label>
+                                            </div>
+                                            <div class="custom-control custom-radio custom-control-inline">
+                                                <input type="radio" id="female" name="gender" class="custom-control-input">
+                                                <label class="custom-control-label" for="female">Female</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 offset-md-1">
+                                        <input hidden id="file" name="file"/>
+                                        <div class="dropzone dropzone-file-area pt-4 pb-4" id="fileUpload">
+                                            <div class="dz-default dz-message">
+                                                <span>Drop A passport size image of user</span>
+                                                <div>You can also click to open file browser</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                <!-- <div class="form-row mt-1">
+                                    <div class="form-group col-md-4 m-0">
+                                        <label for="email" class="col-form-label s-12"><i class="icon-envelope-o mr-2"></i>Email</label>
+                                        <input id="email" placeholder="user@email.com" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                
+                                    <div class="form-group col-md-4 m-0">
+                                        <label for="phone" class="col-form-label s-12"><i class="icon-phone mr-2"></i>Phone</label>
+                                        <input id="phone" placeholder="05112345678" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                    <div class="form-group col-md-4 m-0">
+                                        <label for="mobile" class="col-form-label s-12"><i class="icon-mobile-phone mr-2"></i>Mobile</label>
+                                        <input id="mobile" placeholder="eg: 3334709643" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-9 m-0">
+                                        <label for="address"  class="col-form-label s-12">Address</label>
+                                        <input type="text" class="form-control r-0 light s-12" id="address"
+                                               placeholder="Enter Address">
+                                    </div>
+                                
+                                    <div class="form-group col-md-3 m-0">
+                                        <label for="inputCity" class="col-form-label s-12">City</label>
+                                        <input type="text" class="form-control r-0 light s-12" id="inputCity">
+                                    </div>
+                                </div> 
+                            </div> 
+                            <hr> -->
+                            <div class="card-body">
+                                <h5 class="card-title">ENROLLMENT</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 m-0">
+                                        <label for="roll1" class="col-form-label s-12"># ID NUMBER</label>
+                                        <input id="roll1" placeholder="Enter ID Number" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                    <div class="form-group col-md-3 m-0">
+                                        <label for="roll2" class="col-form-label s-12">CLASS</label>
+                                        <input id="roll2" placeholder="Select Class" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                    <div class="form-group col-md-3 m-0">
+                                        <label for="roll4" class="col-form-label s-12">SECTION</label>
+                                        <input id="roll4" placeholder="Select Class" class="form-control r-0 light s-12 " type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6 m-0">
+                                        <label for="joining" class="col-form-label s-12"><i class="icon-calendar mr-2"></i>DATE OF JOINING</label>
+                                        <input id="joining" placeholder="user@email.com" class="form-control r-0 light s-12 datePicker" data-time-picker="false"
+                                               data-format-date='Y/m/d' type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <h5 class="card-title">PARENT / GUARDIAN</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-5 m-0">
+                                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Select A parent</label>
+                                        <select class="custom-select my-1 mr-sm-2 form-control r-0 light s-12" id="inlineFormCustomSelectPref">
+                                            <option selected>Choose...</option>
+                                            <option value="1">One</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary bg-primary btn-sm mt-2">Add New Guardian</a>
+                            </div>
+                            <hr>
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-primary btn-lg"><i class="icon-save mr-2"></i>Save Data</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
+<!-- Right Sidebar -->
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('Admin.aside', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

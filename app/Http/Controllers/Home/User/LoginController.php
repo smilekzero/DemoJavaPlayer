@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers\Home\User;
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
+use App\Http\Controllers\Controller;
+
+class LoginController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+    	
+        return view('Home/login');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $this->validate($request,[
+            'uname' => 'required',
+            'phone' => 'required',
+            'password' => 'required',
+            'repass' => 'required',
+            
+        ],[
+            'uname.required'=>'标题必填',
+            'phone.required'=>'作者必填',
+            'password.required'=>'来源必填',
+            'repass.required'=>'内容必填',
+            
+        ]);
+        // 接收数据
+        $data = $request->except(['_token','repass']);
+       // dump($data);
+         $res = DB::table('users')->insert($data);
+        if($res){
+            return redirect('login/index')->with('success','注册 成功');
+            }else{}
+            return back()->with('error','注册失败');
+        return view('Home/login');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function login(Request $request)
+    {
+    	$data = $request->except(['_token']);
+    	//dd($data);
+    	$res = DB::table('users')->where('uname', $data['uname'])->where('password',$data['password'])->first();
+    	if(empty($res)){
+			return redirect('login')->with('msg','error');
+    	}else{
+
+			$redis = app('redis.connection');
+    		$redis->mset($res);
+    		$retval = $redis -> mget (array_keys( $res)); 
+    		dump($retval);
+    		return redirect('');
+    	}
+    }
+}
